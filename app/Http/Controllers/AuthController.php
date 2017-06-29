@@ -20,12 +20,16 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
+        $this->validate($request, [
+            'email' => 'required|string|email',
+            'password' => 'required|string'
+        ]);
         // grab credentials from the request
         $credentials = $request->only('email', 'password');
 
         $customClaims = [];
         if ($request->rememberMe)
-            $customClaims = ['exp' => Carbon::now()->addDay()->timestamp];
+            $customClaims = ['exp' => Carbon::now()->addMinutes(720)->timestamp];
 
         try {
             // attempt to verify the credentials and create a token for the user
