@@ -14,6 +14,9 @@ use Illuminate\Http\Request;
 */
 Route::post('/auth/login', 'AuthController@login');
 Route::post('/auth/register', 'AuthController@register');
+Route::post('/password/create', 'AuthController@passwordCreate');
+Route::get('/password/find/{token}', 'AuthController@passwordFind');
+Route::post('/password/reset', 'AuthController@passwordReset');
 
 Route::group(['middleware' => 'jwt.auth'], function() {
     Route::post('/auth/logout', 'AuthController@logout');

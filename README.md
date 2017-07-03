@@ -5,7 +5,8 @@
 
 - [Install](#install)
 - [Routes](#routes)
-  - [Authentication Routes](authentication-routes)
+  - [Authentication](authentication)
+  - [Password request](password-request)
 
 
 ### Install
@@ -56,9 +57,15 @@ DB_PASSWORD=secret
 
 ### Routes
 
-Authentication Routes
+Authentication
 
 - POST /auth/login
 - POST /auth/logout
 - POST /auth/register
 - GET /auth/user
+
+Password reset
+
+- POST /password/create
+- GET /password/find/{token}
+- POST /password/reset
